@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_anything" android:icon="@android:drawable/ic_menu_edit"
+    <group android:checkableBehavior="none">
+        <item android:id="@+id/nav_anything" android:icon="@drawable/ic_config"
             android:title="Sobre" />
         <item android:id="@+id/nav_config" android:icon="@android:drawable/ic_menu_manage"
             android:title="Configurações" />
@@ -10,8 +10,9 @@
             android:title="Fale Conosco" />
         <item android:id="@+id/nav_help" android:icon="@android:drawable/ic_menu_help"
             android:title="Ajuda" />
-
     </group>
+
+
 
 
 </menu>
