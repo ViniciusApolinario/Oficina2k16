@@ -1,6 +1,8 @@
 package com.example.nicolasbezerra.apagar;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,18 +18,23 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
 
     public static String TextOnQrcode;
     private ZXingScannerView mScannerView;
-
+    private String LinkV1;
+    private String LinkV2;
+    private String LinkV3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+        LinkV1 = "https://ia801400.us.archive.org/31/items/taxi-turvy/taxi-turvy_512kb.mp4";
+        LinkV2 = "https://ia800209.us.archive.org/20/items/ElephantsDream/ed_hd_512kb.mp4";
+        LinkV3 = "";
 
         View v = getWindow().getDecorView().getRootView();
         QrScanner(v);
     }
 
     public void QrScanner(View view){
-
 
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         setContentView(mScannerView);
@@ -46,11 +53,10 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
     @Override
     public void handleResult(Result rawResult) {
         // Do something with the result here
-
         Log.e("handler", rawResult.getText()); // Prints scan results  >rawREsult.getText();
         Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
 
-        if(rawResult.getText().equals("https://ia801400.us.archive.org/31/items/taxi-turvy/taxi-turvy_512kb.mp4"))
+        if(rawResult.getText().equals(LinkV1))
         {
             onPause();
             TextOnQrcode = rawResult.getText();
@@ -59,13 +65,25 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
             startActivity(x);
             finish();
         }
-        else if(rawResult.getText().equals("https://ia800209.us.archive.org/20/items/ElephantsDream/ed_hd_512kb.mp4")) {
+        if(rawResult.getText().equals(LinkV2)) {
             onPause();
             TextOnQrcode = rawResult.getText();
             Intent x = new Intent(this,MoviePartyActivity.class);
             x.putExtra("I_need_that", TextOnQrcode);
             startActivity(x);
             finish();
+        }
+        else if(rawResult.getText() != LinkV1 || rawResult.getText() != LinkV2 || rawResult.getText() != LinkV3)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Erro");
+            alertDialog.setMessage("QrCode não pertencente ao projeto");
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            alertDialog.show();
         }
 
 
