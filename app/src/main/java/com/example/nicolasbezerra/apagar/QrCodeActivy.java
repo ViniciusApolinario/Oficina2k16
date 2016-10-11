@@ -22,13 +22,19 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
     private String LinkV2;
     private String LinkV3;
 
+    private String QCFeedback1;
+    private String QCFeedback2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        LinkV1 = "https://ia801400.us.archive.org/31/items/taxi-turvy/taxi-turvy_512kb.mp4";
-        LinkV2 = "https://ia800209.us.archive.org/20/items/ElephantsDream/ed_hd_512kb.mp4";
+        LinkV2 = "https://ia801400.us.archive.org/31/items/taxi-turvy/taxi-turvy_512kb.mp4";
+        LinkV1 = "https://ia601503.us.archive.org/7/items/nroipd0001/CurtaBanheiro-Corte00-1.mp4";
         LinkV3 = "";
+
+        QCFeedback1 = "Baixe o Descubra no NAVE #grumete";
+        QCFeedback2 = "Baixe o App no NAVE #grumete";
 
         View v = getWindow().getDecorView().getRootView();
         QrScanner(v);
@@ -38,7 +44,6 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
 
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         setContentView(mScannerView);
-
         mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
         mScannerView.startCamera();         // Start camera
 
@@ -56,24 +61,24 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
         Log.e("handler", rawResult.getText()); // Prints scan results  >rawREsult.getText();
         Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
 
-        if(rawResult.getText().equals(LinkV1))
+        if(rawResult.getText().equals(QCFeedback1))
         {
             onPause();
-            TextOnQrcode = rawResult.getText();
+            TextOnQrcode = LinkV1;
             Intent x = new Intent(this,MoviePartyActivity.class);
             x.putExtra("I_need_that", TextOnQrcode);
             startActivity(x);
             finish();
         }
-        if(rawResult.getText().equals(LinkV2)) {
+        if(rawResult.getText().equals(QCFeedback2)) {
             onPause();
-            TextOnQrcode = rawResult.getText();
+            TextOnQrcode = LinkV2;
             Intent x = new Intent(this,MoviePartyActivity.class);
             x.putExtra("I_need_that", TextOnQrcode);
             startActivity(x);
             finish();
         }
-        else if(rawResult.getText() != LinkV1 || rawResult.getText() != LinkV2 || rawResult.getText() != LinkV3)
+        else if(rawResult.getText() != QCFeedback1 || rawResult.getText() != QCFeedback2 )
         {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Erro");
