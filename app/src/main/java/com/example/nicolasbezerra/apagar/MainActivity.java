@@ -23,7 +23,7 @@ import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+{
 
 
     @Override
@@ -31,20 +31,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().getDecorView().setBackgroundColor(Color.BLACK);
-        Intent i = new Intent(this,MyService.class);
-        if(!isMyServiceRunning(MyService.class)) startService(i);
-        startService(i);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        /*
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener(this);
+        */
     }
 
     @Override
@@ -57,50 +54,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if(id == R.id.nav_config)
-        {
-            Intent i = new Intent(this,ConfigActivity.class);
-            startActivity(i);
-        }
-        else if (id == R.id.nav_help)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("AJUDA");
-            builder.setMessage("LOREMCINHO Y ,LORENCINHO Y, LORENCINHO LORENCINHO LORENCINHO LORENCINHO LORENCINHO LORENCINHO");
-            AlertDialog alert1 = builder.create();
-            alert1.show();
-        }
-        else if (id == R.id.nav_feedb)
-        {
-            Intent i = new Intent(this,FeedbackActivity.class);
-            startActivity(i);
-        }
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
     public void Moviescene(View v)
     {
         Intent i = new Intent(this,QrCodeActivy.class);
         startActivity(i);
     }
 
-    private boolean isMyServiceRunning(Class<?> serviceClass)
-    {
-        ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
 
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
-        {
-            if (serviceClass.getName().equals(service.service.getClassName())) return true;
-        }
-        return false;
-    }
 }
 

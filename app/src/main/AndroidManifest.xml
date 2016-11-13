@@ -33,11 +33,6 @@
         <activity android:name=".ConfigActivity" />
         <activity android:name=".MoviePartyActivity" />
         <activity android:name=".QrCodeActivy" />
-        <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
     </application>
 
 </manifest>
