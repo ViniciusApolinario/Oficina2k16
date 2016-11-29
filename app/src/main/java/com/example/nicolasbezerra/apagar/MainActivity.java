@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
 
+        host.setBackgroundColor(Color.parseColor("#5c3f69"));
+
         //Tab 1
         TabHost.TabSpec spec = host.newTabSpec("Tab One");
         spec.setContent(R.id.tab1);
