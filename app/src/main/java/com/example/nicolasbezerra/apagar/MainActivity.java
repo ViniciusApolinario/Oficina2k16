@@ -20,28 +20,37 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TabHost;
 
 
 public class MainActivity extends AppCompatActivity
 {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().getDecorView().setBackgroundColor(Color.BLACK);
 
+        TabHost host = (TabHost)findViewById(R.id.tabHost);
+        host.setup();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        /*
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-        */
+        //Tab 1
+        TabHost.TabSpec spec = host.newTabSpec("Tab One");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("Tab One");
+        host.addTab(spec);
+
+        //Tab 2
+        spec = host.newTabSpec("Tab Two");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("Tab Two");
+        host.addTab(spec);
+
+        //Tab 3
+        spec = host.newTabSpec("Tab Three");
+        spec.setContent(R.id.tab3);
+        spec.setIndicator("Tab Three");
+        host.addTab(spec);
     }
 
     @Override
