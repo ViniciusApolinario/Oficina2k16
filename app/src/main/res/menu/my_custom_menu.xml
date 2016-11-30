@@ -2,22 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/menu_pick_color"
-        android:title=""
-        app:showAsAction="always"
-        app:actionLayout="@layout/logo_main" />
-    </group>
 
-    <item android:title="">
-        <menu>
-            <item
-                android:id="@+id/menu_pick_color2"
-                android:title=""
-                app:showAsAction="always"
-                app:actionLayout="@layout/logo_main" />
-        </menu>
-    </item>
 
 </menu>

@@ -33,7 +33,8 @@
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".ConfigActivity" />
         <activity android:name=".MoviePartyActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".QrCodeActivy" />
     </application>
 

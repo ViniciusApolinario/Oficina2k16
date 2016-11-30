@@ -30,11 +30,11 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
         super.onCreate(savedInstanceState);
 
         LinkV2 = "https://ia801502.us.archive.org/24/items/nroipd0002/Doc-V3-CorParcial.mp4";
-        LinkV1 = "https://ia601503.us.archive.org/7/items/nroipd0001/CurtaBanheiro-Corte00-1.mp4";
+        LinkV1 = "https://ia601500.us.archive.org/10/items/nroipd0003/Banheiro-Corte3.mp4";
         LinkV3 = "";
 
-        QCFeedback1 = "Baixe o Descubra no NAVE #grumete";
-        QCFeedback2 = "Baixe o App no NAVE #grumete";
+        QCFeedback1 = "http://vhl-liporage.wixsite.com/pervasivo/clubinho";
+        QCFeedback2 = "http://vhl-liporage.wixsite.com/pervasivo/banheiro";
 
         View v = getWindow().getDecorView().getRootView();
         QrScanner(v);
@@ -61,16 +61,17 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
         Log.e("handler", rawResult.getText()); // Prints scan results  >rawREsult.getText();
         Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
 
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Erro");
+        alertDialog.setMessage("QrCode não pertencente ao projeto");
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
         if(rawResult.getText().equals(QCFeedback1))
         {
-            onPause();
-            TextOnQrcode = LinkV1;
-            Intent x = new Intent(this,MoviePartyActivity.class);
-            x.putExtra("I_need_that", TextOnQrcode);
-            startActivity(x);
-            finish();
-        }
-        if(rawResult.getText().equals(QCFeedback2)) {
             onPause();
             TextOnQrcode = LinkV2;
             Intent x = new Intent(this,MoviePartyActivity.class);
@@ -78,16 +79,16 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
             startActivity(x);
             finish();
         }
+        if(rawResult.getText().equals(QCFeedback2)) {
+            onPause();
+            TextOnQrcode = LinkV1;
+            Intent x = new Intent(this,MoviePartyActivity.class);
+            x.putExtra("I_need_that", TextOnQrcode);
+            startActivity(x);
+            finish();
+        }
         else if(rawResult.getText() != QCFeedback1 || rawResult.getText() != QCFeedback2 )
         {
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle("Erro");
-            alertDialog.setMessage("QrCode não pertencente ao projeto");
-            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
             alertDialog.show();
         }
 
