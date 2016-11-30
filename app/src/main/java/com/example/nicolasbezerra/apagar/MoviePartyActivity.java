@@ -2,6 +2,7 @@ package com.example.nicolasbezerra.apagar;
 
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.net.Uri;
@@ -19,6 +20,7 @@ public class MoviePartyActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera_main);
+        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#5c3f69"));
         vidView = (VideoView)findViewById(R.id.myVideo);
         extra = getIntent().getExtras();
         URL = extra.getString("I_need_that");

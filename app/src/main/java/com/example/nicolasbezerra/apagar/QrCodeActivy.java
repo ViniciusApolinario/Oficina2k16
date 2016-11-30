@@ -29,7 +29,7 @@ public class QrCodeActivy extends AppCompatActivity implements ZXingScannerView.
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        LinkV2 = "https://ia801400.us.archive.org/31/items/taxi-turvy/taxi-turvy_512kb.mp4";
+        LinkV2 = "https://ia801502.us.archive.org/24/items/nroipd0002/Doc-V3-CorParcial.mp4";
         LinkV1 = "https://ia601503.us.archive.org/7/items/nroipd0001/CurtaBanheiro-Corte00-1.mp4";
         LinkV3 = "";
 
